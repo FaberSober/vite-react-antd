@@ -20,10 +20,14 @@ export default function SortableItem(props:SortableItemProps) {
     transition,
   } = useSortable({id: props.id});
 
-  const style = {
-    transform: CSS.Transform.toString(transform),
+  const style: CSSProperties = {
+    // transform: CSS.Transform.toString(transform),
+    transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : '',
     transition,
     cursor: 'grab',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   };
 
   return (

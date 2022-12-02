@@ -16,7 +16,7 @@ import {
 import SortableItem from '@/components/dnd/SortableItem';
 
 
-export default function sort() {
+export default function index() {
   const [items, setItems] = useState([1, 2, 3]);
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -49,7 +49,7 @@ export default function sort() {
         strategy={verticalListSortingStrategy}
       >
         {items.map(id => (
-          <SortableItem key={id} id={id} style={{ borderBottom: '1px solid #eee', padding: 8 }}>
+          <SortableItem key={id} id={id} style={{ borderBottom: '1px solid #eee', padding: 8 }} handle>
             <div>{id}</div>
           </SortableItem>
         ))}
