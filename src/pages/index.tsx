@@ -10,6 +10,7 @@ export default function App() {
       <Link to="/dragAndDrop">drag and drop</Link>
       <Link to="/sort">sort list</Link>
       <Link to="/sortWithHandle">sort with handle</Link>
+      <Link to="/sortVertical">sort list vertical</Link>
     </div>
   )
 }

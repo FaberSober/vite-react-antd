@@ -9,6 +9,7 @@ export interface SortableItemProps {
   handle?: boolean;
   style?: CSSProperties;
   children?: ReactNode;
+  vertical?: boolean;
 }
 
 export default function SortableItem(props:SortableItemProps) {
@@ -29,6 +30,9 @@ export default function SortableItem(props:SortableItemProps) {
     flexDirection: 'row',
     alignItems: 'center',
   };
+  if (props.vertical) {
+    style.transform = transform ? `translate3d(${props.vertical ? 0 : transform.x}px, ${props.vertical ? transform.y : 0}px, 0)` : '';
+  }
 
   return (
     <div ref={setNodeRef} style={{ ...style, ...props.style }} {...(props.handle ? {} : listeners)} {...attributes}>
