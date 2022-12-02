@@ -14,7 +14,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 
-import SortableItem from './SortableItem';
+import SortableItem from '@/components/dnd/SortableItem';
 
 export default function App() {
   const [items, setItems] = useState([1, 2, 3]);

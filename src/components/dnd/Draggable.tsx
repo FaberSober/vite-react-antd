@@ -4,7 +4,7 @@ import {Button} from "antd";
 
 
 export interface DraggableProps {
-  handle?: boolean
+  handle?: boolean;
   children?: ReactNode;
   style?: CSSProperties;
 }

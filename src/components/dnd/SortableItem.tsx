@@ -1,10 +1,12 @@
 import React, {CSSProperties, ReactNode} from 'react';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
+import {Button} from "antd";
 
 
 export interface SortableItemProps {
   id: any,
+  handle?: boolean;
   style?: CSSProperties;
   children?: ReactNode;
 }
@@ -25,8 +27,9 @@ export default function SortableItem(props:SortableItemProps) {
   };
 
   return (
-    <div ref={setNodeRef} style={{ ...style, ...props.style }} {...attributes} {...listeners}>
+    <div ref={setNodeRef} style={{ ...style, ...props.style }} {...(props.handle ? {} : listeners)} {...attributes}>
       {props.children}
+      {props.handle && <Button {...listeners}>Handle</Button>}
     </div>
   );
 }
