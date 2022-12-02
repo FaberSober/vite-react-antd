@@ -48,7 +48,11 @@ export default function App() {
         items={items}
         strategy={verticalListSortingStrategy}
       >
-        {items.map(id => <SortableItem key={id} id={id} />)}
+        {items.map(id => (
+          <SortableItem key={id} id={id} style={{ borderBottom: '1px solid #eee', padding: 8 }}>
+            <div>{id}</div>
+          </SortableItem>
+        ))}
       </SortableContext>
     </DndContext>
   );

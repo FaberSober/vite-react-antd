@@ -1,8 +1,15 @@
-import React from 'react';
+import React, {CSSProperties, ReactNode} from 'react';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 
-export default function SortableItem(props:any) {
+
+export interface SortableItemProps {
+  id: any,
+  style?: CSSProperties;
+  children?: ReactNode;
+}
+
+export default function SortableItem(props:SortableItemProps) {
   const {
     attributes,
     listeners,
@@ -14,11 +21,12 @@ export default function SortableItem(props:any) {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    cursor: 'grab',
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      {/* ... */}
+    <div ref={setNodeRef} style={{ ...style, ...props.style }} {...attributes} {...listeners}>
+      {props.children}
     </div>
   );
 }

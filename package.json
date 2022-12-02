@@ -2,7 +2,7 @@
   "name": "react",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 8001",
     "build": "vite build",
     "serve": "vite preview"
   },
