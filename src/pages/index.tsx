@@ -9,6 +9,7 @@ export default function App() {
       <Link to="/dragWithHandle">drag with handle</Link>
       <Link to="/dragAndDrop">drag and drop</Link>
       <Link to="/sortable">sortable</Link>
+      <Link to="/sortable">sort with handle</Link>
     </div>
   )
 }

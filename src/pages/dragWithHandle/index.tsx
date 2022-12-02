@@ -11,7 +11,7 @@ import {DndContext} from "@dnd-kit/core";
 export default function index() {
   return (
     <DndContext>
-      <Draggable>
+      <Draggable handle>
         <Button>Drag me</Button>
       </Draggable>
     </DndContext>
