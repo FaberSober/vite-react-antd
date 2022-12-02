@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {DndContext} from '@dnd-kit/core';
-
-import {Droppable} from './Droppable';
-import {Draggable} from './Draggable';
 import {Button} from "antd";
+import {DndContext} from '@dnd-kit/core';
+import Draggable from "@/components/dnd/Draggable";
+import Droppable from "@/components/dnd/Droppable";
+
 
 export default function App() {
   const [isDropped, setIsDropped] = useState(false);
