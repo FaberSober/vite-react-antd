@@ -15,6 +15,7 @@ export default function simple() {
         <FontAwesomeIcon icon="fa-solid fa-check-square" size="4x" />
         <FontAwesomeIcon icon="fa-solid fa-check-square" size="4x" />
         <FontAwesomeIcon icon="fa-solid fa-circle" size="4x" />
+        <FontAwesomeIcon icon="fa-solid fa-rocket" size="4x" />
       </Space>
 
       <p>@fortawesome/free-regular-svg-icons</p>
@@ -22,6 +23,7 @@ export default function simple() {
         <FontAwesomeIcon icon="fa-regular fa-check-square" size="4x" />
         <FontAwesomeIcon icon="fa-regular fa-check-square" size="4x" />
         <FontAwesomeIcon icon="fa-regular fa-circle" size="4x" />
+        <FontAwesomeIcon icon="fa-regular fa-rocket" size="4x" />
       </Space>
 
       <p>Rotate and Flip Icons</p>

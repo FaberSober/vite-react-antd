@@ -9,6 +9,7 @@ export default function App() {
       <div>
         <Link to="/fontawesome/simple">simple.tsx</Link>
         <Divider type="vertical" />
+        <Link to="/fontawesome/all">all.tsx</Link>
       </div>
     </div>
   )
