@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import * as fas from '@fortawesome/free-solid-svg-icons'
 import * as far from '@fortawesome/free-regular-svg-icons'
+import * as fab from '@fortawesome/free-brands-svg-icons'
 import {each} from 'lodash'
 import {Radio} from "antd";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -24,6 +25,13 @@ each(far, i => {
   }
 })
 
+const listBrand = new Set();
+each(fab, i => {
+  if (i.iconName) {
+    listBrand.add(i.iconName)
+  }
+})
+
 
 /**
  * @author xu.pengfei
@@ -37,6 +45,7 @@ export default function all() {
       <Radio.Group value={prefix} onChange={(e) => setPrefix(e.target.value)}>
         <Radio value="solid">solid</Radio>
         <Radio value="regular">regular</Radio>
+        <Radio value="brands">brands</Radio>
       </Radio.Group>
 
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
@@ -48,6 +57,11 @@ export default function all() {
         {prefix === 'regular' && Array.from(listRegular).map(i => (
           <div key={i} style={{ margin: 12 }}>
             <FontAwesomeIcon icon={`fa-solid fa-${i}`} size="2x" />
+          </div>
+        ))}
+        {prefix === 'brands' && Array.from(listBrand).map(i => (
+          <div key={i} style={{ margin: 12 }}>
+            <FontAwesomeIcon icon={`fa-brands fa-${i}`} size="2x" />
           </div>
         ))}
       </div>
