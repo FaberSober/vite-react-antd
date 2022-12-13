@@ -14,10 +14,13 @@ export default function simple() {
       <Space>
         <FontAwesomeIcon icon="fa-solid fa-check-square" size="4x" />
         <FontAwesomeIcon icon="fa-solid fa-check-square" size="4x" />
+        <FontAwesomeIcon icon="fa-solid fa-circle" size="4x" />
       </Space>
 
       <p>@fortawesome/free-regular-svg-icons</p>
       <Space>
+        <FontAwesomeIcon icon="fa-regular fa-check-square" size="4x" />
+        <FontAwesomeIcon icon="fa-regular fa-check-square" size="4x" />
         <FontAwesomeIcon icon="fa-regular fa-circle" size="4x" />
       </Space>
 
