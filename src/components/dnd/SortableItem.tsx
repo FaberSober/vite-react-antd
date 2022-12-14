@@ -30,13 +30,15 @@ export default function SortableItem(props:SortableItemProps) {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    zIndex: props.dragging ? 999 : undefined,
+    boxShadow: props.dragging ? '8px 8px 8px rgba(0, 21, 41, 0.08)' : undefined,
   };
   if (props.vertical) {
     style.transform = transform ? `translate3d(${props.vertical ? 0 : transform.x}px, ${props.vertical ? transform.y : 0}px, 0)` : '';
   }
 
   return (
-    <div ref={setNodeRef} className={props.dragging ? styles.dragging : styles.item} style={{ ...style, ...props.style }} {...(props.handle ? {} : listeners)} {...attributes}>
+    <div ref={setNodeRef} style={{ ...style, ...props.style }} {...(props.handle ? {} : listeners)} {...attributes}>
       {props.children}
       {props.handle && <Button {...listeners}>Handle</Button>}
     </div>
