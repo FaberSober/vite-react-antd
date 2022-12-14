@@ -11,6 +11,7 @@ export default function App() {
       <Link to="/sort">sort list</Link>
       <Link to="/sortWithHandle">sort with handle</Link>
       <Link to="/sortVertical">sort list vertical</Link>
+      <Link to="/sortGrid">sort grid</Link>
     </div>
   )
 }
