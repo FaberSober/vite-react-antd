@@ -42,13 +42,7 @@ export default function App() {
   return (
     <div>
       <div>
-        <p>index.tsx</p>
-        <Link to="/blog">
-          blog
-        </Link> |
-        <Link to="/xxx">
-          not exists
-        </Link>
+        <Link to="/allotment">allotment</Link>
       </div>
       <div style={{ marginTop: 12 }}>
         <Radio.Group
