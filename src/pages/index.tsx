@@ -37,10 +37,10 @@ export default function App() {
       <div className="fa-p12">
         <div>
           <p>index.tsx</p>
-          <Link to="/blog">blog</Link> |<Link to="/xxx">not exists</Link>
-          <div className="fa-flex-column">
-            <Link to="/unocss/demo01">unocss/demo01</Link>
-          </div>
+          <ol>
+            <li><Link to="/formily/demo01">demo01 - basic</Link></li>
+            <li><Link to="/formily/demo02">demo02</Link></li>
+          </ol>
         </div>
         <div style={{ marginTop: 12 }}>
           <Radio.Group
