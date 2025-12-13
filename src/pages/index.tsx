@@ -50,6 +50,7 @@ export default function App() {
             <li><Link to="/dnd/demo05">demo05 - @fa/ui horizontal sortable list</Link></li>
             <li><Link to="/dnd/demo06">demo06 - @fa/ui nested sortable list</Link></li>
             <li><Link to="/dnd/demo07">demo07 - simple drag and drop</Link></li>
+            <li><Link to="/dnd/demo08">demo08 - basic low code editor</Link></li>
           </ol>
         </div>
         <div style={{ marginTop: 12 }}>

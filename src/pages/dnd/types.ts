@@ -5,3 +5,9 @@ export interface Row {
   id: string;
   fields: FieldId[];
 }
+
+export interface DynItem {
+  id: string,
+  type: 'input' | 'row',
+  children?: DynItem[],
+}

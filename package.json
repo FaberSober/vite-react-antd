@@ -20,7 +20,7 @@
     "@formily/antd-v5": "1.2.4",
     "@formily/core": "2.3.7",
     "@formily/react": "2.3.7",
-    "antd": "6.0.1",
+    "antd": "6.1.0",
     "clsx": "2.1.1",
     "dayjs": "1.11.19",
     "lodash": "4.17.21",
@@ -28,7 +28,8 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "19.2.1",
-    "react-router-dom": "7.10.1"
+    "react-router-dom": "7.10.1",
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.8",
