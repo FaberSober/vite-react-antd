@@ -19,6 +19,8 @@ interface FaFormState {
   reorderFormItems: (items: DynItem[]) => void;
   // 重新排序行内的子项
   reorderRowChildren: (rowId: string, children: DynItem[]) => void;
+  // 将子项从一个行移动到另一个行
+  moveChildBetweenRows: (sourceRowId: string, targetRowId: string, childId: string) => void;
   // 清空表单
   clearFormItems: () => void;
 }
@@ -84,6 +86,33 @@ export const useFaFormStore = create<FaFormState>()(
           ? { ...item, children }
           : item
       ),
+    })),
+
+  moveChildBetweenRows: (sourceRowId, targetRowId, childId) =>
+    set((state) => ({
+      formItems: state.formItems.map((item) => {
+        // 从源行删除子项
+        if (item.id === sourceRowId && item.type === 'row') {
+          return {
+            ...item,
+            children: (item.children || []).filter((child) => child.id !== childId),
+          };
+        }
+        // 到目标行添加子项
+        if (item.id === targetRowId && item.type === 'row') {
+          const childToMove = state.formItems
+            .find((sourceItem) => sourceItem.id === sourceRowId && sourceItem.type === 'row')
+            ?.children?.find((child) => child.id === childId);
+
+          if (childToMove) {
+            return {
+              ...item,
+              children: [...(item.children || []), childToMove],
+            };
+          }
+        }
+        return item;
+      }),
     })),
 
   clearFormItems: () =>

@@ -18,6 +18,7 @@ export default function FaFormDemo01() {
   const formItems = useFaFormStore((state) => state.formItems);
   const reorderFormItems = useFaFormStore((state) => state.reorderFormItems);
   const reorderRowChildren = useFaFormStore((state) => state.reorderRowChildren);
+  const moveChildBetweenRows = useFaFormStore((state) => state.moveChildBetweenRows);
   const addFormItem = useFaFormStore((state) => state.addFormItem);
   const addChildToRow = useFaFormStore((state) => state.addChildToRow);
 
@@ -37,6 +38,47 @@ export default function FaFormDemo01() {
         addFormItem('row');
       }
       return;
+    }
+
+    const activeType = (active.data.current as any)?.type;
+    const overType = (over.data.current as any)?.type;
+
+    // 处理RowItem拖到另一个RowContainer中
+    if (activeType === 'RowItem') {
+      const activeId = String(active.id);
+
+      // 查找源行（包含被拖动的子项的行）
+      const sourceRow = formItems.find((item) =>
+        item.type === 'row' && item.children?.some((child) => child.id === activeId)
+      );
+
+      // 检查是否拖到了一个RowContainer（droppable-row-xxx）
+      const overId = String(over.id);
+      if (overId.startsWith('droppable-row-')) {
+        const targetRowId = overId.replace('droppable-row-', '');
+
+        // 只有当源行和目标行不同时，才执行跨行移动
+        if (sourceRow && sourceRow.id !== targetRowId) {
+          moveChildBetweenRows(sourceRow.id, targetRowId, activeId);
+          return;
+        }
+      }
+
+      // 处理RowContainer内的子项排序（同一行内）
+      if (activeType === 'RowItem' && overType === 'RowItem') {
+        const overId = String(over.id);
+
+        if (sourceRow && sourceRow.children) {
+          const activeIndex = findIndex(sourceRow.children, { id: activeId });
+          const overIndex = findIndex(sourceRow.children, { id: overId });
+
+          if (activeIndex !== -1 && overIndex !== -1) {
+            const newChildren = arrayMove(sourceRow.children, activeIndex, overIndex);
+            reorderRowChildren(sourceRow.id, newChildren);
+          }
+        }
+        return;
+      }
     }
 
     // 拖动到行容器中
