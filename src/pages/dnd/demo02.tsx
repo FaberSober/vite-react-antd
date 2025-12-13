@@ -6,7 +6,8 @@ import {
 } from '@dnd-kit/core';
 import {
   SortableContext,
-  verticalListSortingStrategy,
+
+  horizontalListSortingStrategy, // 关键改变：引入水平列表排序策略
   arrayMove
 } from '@dnd-kit/sortable';
 import { SortableItem } from './components/SortableItem';
@@ -14,7 +15,7 @@ import { SortableItem } from './components/SortableItem';
 // 定义表单项的类型，这里简化为字符串数组
 type FormItem = string;
 
-export default function DndDemo01SimpleVerticalSortableTS() {
+export default function DndDemo02SimpleHorizontalSortableTS() {
   // 1. 初始化列表项数据
   const [items, setItems] = useState<FormItem[]>(['组件 A', '组件 B', '组件 C', '组件 D']);
 
@@ -50,16 +51,22 @@ export default function DndDemo01SimpleVerticalSortableTS() {
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
     >
-      <div style={{ width: '300px', margin: '50px auto' }}>
-        <h3>垂直排序列表示例</h3>
+      <div style={{ margin: '50px auto', maxWidth: '800px' }}>
+        <h3>水平排序列表示例</h3>
 
         <SortableContext
           items={items}
-          strategy={verticalListSortingStrategy}
+          strategy={horizontalListSortingStrategy}
         >
-          {items.map((id) => (
-            <SortableItem key={id} id={id} />
-          ))}
+          {/* 3. 使用 Flex 布局将列表项水平排列 */}
+          <div style={{ display: 'flex', gap: '8px', padding: '10px', border: '1px solid #ccc', borderRadius: '4px', backgroundColor: '#f9f9f9' }}>
+            {items.map((id) => (
+              // 4. 为 SortableItem 添加额外的样式，让其适应水平布局
+              <div key={id} style={{ minWidth: '100px' }}>
+                <SortableItem id={id} />
+              </div>
+            ))}
+          </div>
         </SortableContext>
 
         <div style={{ marginTop: '20px', padding: '10px', borderTop: '1px solid #ccc' }}>

@@ -43,7 +43,8 @@ export default function App() {
           </ol>
           <p>dnd</p>
           <ol>
-            <li><Link to="/dnd/demo01">demo01 - basic</Link></li>
+            <li><Link to="/dnd/demo01">demo01 - simple vertical list</Link></li>
+            <li><Link to="/dnd/demo02">demo02 - simple horizontal list</Link></li>
           </ol>
         </div>
         <div style={{ marginTop: 12 }}>
