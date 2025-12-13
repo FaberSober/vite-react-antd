@@ -14,7 +14,7 @@ export function Item({ id }: ItemProps) {
     setNodeRef,
     transform,
     transition,
-  } = useSortable({ id });
+  } = useSortable({ id, data: { type: 'Field' } });
 
   const style: React.CSSProperties = {
     // 适应水平布局

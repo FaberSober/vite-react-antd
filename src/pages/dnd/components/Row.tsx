@@ -16,7 +16,7 @@ export function Row({ row }: RowProps) {
     setNodeRef: setRowNodeRef,
     transform: rowTransform,
     transition: rowTransition,
-  } = useSortable({ id: row.id });
+  } = useSortable({ id: row.id, data: { type: 'Row' } });
 
   const rowStyle: React.CSSProperties = {
     transform: CSS.Transform.toString(rowTransform),

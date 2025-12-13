@@ -51,8 +51,13 @@ export default function Demo03NestedSortable() {
     const activeId = String(active.id);
     const overId = String(over.id);
 
+    // 获取拖动元素和目标元素的类型
+    const activeType = (active.data.current as any)?.type;
+    const overType = (over.data.current as any)?.type;
+
     // 1. 检查是否是【外层垂直拖动】（拖动的是 Row）
-    if (rowIds.includes(activeId) && rowIds.includes(overId)) {
+    // 防止当鼠标进入内层 Item 时，over 变为 Field，导致逻辑失效
+    if (activeType === 'Row' && overType === 'Row') {
       const oldIndex = rows.findIndex(r => r.id === activeId);
       const newIndex = rows.findIndex(r => r.id === overId);
 
@@ -62,23 +67,26 @@ export default function Demo03NestedSortable() {
     }
 
     // 2. 检查是否是【内层水平拖动】（拖动的是 Field）
-    const sourceRowIndex = findRowIndex(activeId);
-    const targetRowIndex = findRowIndex(overId);
+    // 只有当 active 和 over 都是 Field 类型时才处理
+    if (activeType === 'Field' && overType === 'Field') {
+      const sourceRowIndex = findRowIndex(activeId);
+      const targetRowIndex = findRowIndex(overId);
 
-    // 拖动必须发生在同一行内 (不支持跨行拖动，如果需要跨行，逻辑会更复杂)
-    if (sourceRowIndex !== -1 && sourceRowIndex === targetRowIndex) {
-      const sourceRow = rows[sourceRowIndex];
+      // 拖动必须发生在同一行内 (不支持跨行拖动，如果需要跨行，逻辑会更复杂)
+      if (sourceRowIndex !== -1 && sourceRowIndex === targetRowIndex) {
+        const sourceRow = rows[sourceRowIndex];
 
-      const oldIndex = sourceRow.fields.indexOf(activeId);
-      const newIndex = sourceRow.fields.indexOf(overId);
+        const oldIndex = sourceRow.fields.indexOf(activeId);
+        const newIndex = sourceRow.fields.indexOf(overId);
 
-      const newFields = arrayMove(sourceRow.fields, oldIndex, newIndex);
+        const newFields = arrayMove(sourceRow.fields, oldIndex, newIndex);
 
-      // 保持数组不可变性地更新 state
-      const newRows = [...rows];
-      newRows[sourceRowIndex] = { ...sourceRow, fields: newFields };
-      setRows(newRows);
-      return;
+        // 保持数组不可变性地更新 state
+        const newRows = [...rows];
+        newRows[sourceRowIndex] = { ...sourceRow, fields: newFields };
+        setRows(newRows);
+        return;
+      }
     }
 
     // 3. 跨列表拖动逻辑（本例中暂不支持，但需要预留）
