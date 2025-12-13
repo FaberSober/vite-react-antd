@@ -52,6 +52,10 @@ export default function App() {
             <li><Link to="/dnd/demo07">demo07 - simple drag and drop</Link></li>
             <li><Link to="/dnd/demo08">demo08 - basic low code editor</Link></li>
           </ol>
+          <p>FaForm</p>
+          <ol>
+            <li><Link to="/faform/demo01">demo01 - 低代码编辑器</Link></li>
+          </ol>
         </div>
         <div style={{ marginTop: 12 }}>
           <Radio.Group
