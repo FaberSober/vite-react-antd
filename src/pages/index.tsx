@@ -48,6 +48,7 @@ export default function App() {
             <li><Link to="/dnd/demo03">demo03 - simple nested sortable list</Link></li>
             <li><Link to="/dnd/demo04">demo04 - @fa/ui vertical sortable list</Link></li>
             <li><Link to="/dnd/demo05">demo05 - @fa/ui horizontal sortable list</Link></li>
+            <li><Link to="/dnd/demo06">demo06 - @fa/ui nested sortable list</Link></li>
           </ol>
         </div>
         <div style={{ marginTop: 12 }}>
