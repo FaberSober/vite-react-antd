@@ -36,10 +36,14 @@ export default function App() {
     <ConfigProvider locale={local === 'zhCN' ? zhCN : enUS}>
       <div className="fa-p12">
         <div>
-          <p>index.tsx</p>
+          <p>formily</p>
           <ol>
             <li><Link to="/formily/demo01">demo01 - basic</Link></li>
             <li><Link to="/formily/demo02">demo02</Link></li>
+          </ol>
+          <p>dnd</p>
+          <ol>
+            <li><Link to="/dnd/demo01">demo01 - basic</Link></li>
           </ol>
         </div>
         <div style={{ marginTop: 12 }}>
