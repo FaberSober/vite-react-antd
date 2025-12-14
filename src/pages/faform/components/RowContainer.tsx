@@ -14,8 +14,8 @@ export interface RowContainerProps {
 /**
  * 行内子项组件，支持拖动
  */
-function RowItem({ item }: { item: DynItem }) {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: item.id, data: { type: 'RowItem' } });
+function RowItem({ item, rowId }: { item: DynItem; rowId: string }) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: item.id, data: { type: 'RowItem', rowId } });
 
   const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
@@ -84,7 +84,7 @@ export default function RowContainer({ row }: RowContainerProps) {
               }}
             >
               {row.children?.map((child) => (
-                <RowItem key={child.id} item={child} />
+                <RowItem key={child.id} item={child} rowId={row.id} />
               ))}
             </div>
           </SortableContext>

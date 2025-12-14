@@ -19,6 +19,7 @@ export default function FaFormDemo01() {
   const reorderFormItems = useFaFormStore((state) => state.reorderFormItems);
   const reorderRowChildren = useFaFormStore((state) => state.reorderRowChildren);
   const moveChildBetweenRows = useFaFormStore((state) => state.moveChildBetweenRows);
+  const moveChildFromRowToForm = useFaFormStore((state) => state.moveChildFromRowToForm);
   const addFormItem = useFaFormStore((state) => state.addFormItem);
   const addChildToRow = useFaFormStore((state) => state.addChildToRow);
 
@@ -30,8 +31,24 @@ export default function FaFormDemo01() {
       return;
     }
 
+    const activeType = (active.data.current as any)?.type;
+    const overType = (over.data.current as any)?.type;
+
     // 拖动到画布上
     if (over.id === DROPPABLE_ID) {
+      // 处理RowItem拖到主表单画布
+      if (activeType === 'RowItem') {
+        const activeId = String(active.id);
+        const sourceRowId = (active.data.current as any)?.rowId;
+        const overId = String(over.id);
+
+        // 拖动到主表单画布
+        if (overId === DROPPABLE_ID && sourceRowId) {
+          moveChildFromRowToForm(sourceRowId, activeId);
+          return;
+        }
+      }
+
       if (active.id === 'input') {
         addFormItem('input');
       } else if (active.id === 'row') {
@@ -39,9 +56,6 @@ export default function FaFormDemo01() {
       }
       return;
     }
-
-    const activeType = (active.data.current as any)?.type;
-    const overType = (over.data.current as any)?.type;
 
     // 处理RowItem拖到另一个RowContainer中
     if (activeType === 'RowItem') {
