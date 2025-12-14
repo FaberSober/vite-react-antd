@@ -23,6 +23,8 @@ interface FaFormState {
   moveChildBetweenRows: (sourceRowId: string, targetRowId: string, childId: string) => void;
   // 将子项从行移动到主表单
   moveChildFromRowToForm: (rowId: string, childId: string) => void;
+  // 将主表单项目移动到行内
+  moveFormItemToRow: (formItemId: string, rowId: string) => void;
   // 清空表单
   clearFormItems: () => void;
 }
@@ -140,6 +142,28 @@ export const useFaFormStore = create<FaFormState>()(
           ?.children?.find((child) => child.id === childId) || null
       ).filter((item): item is DynItem => item !== null),
     })),
+
+  moveFormItemToRow: (formItemId, rowId) =>
+    set((state) => {
+      // 查找要移动的表单项
+      const itemToMove = state.formItems.find((item) => item.id === formItemId);
+      if (!itemToMove) return state;
+
+      return {
+        formItems: state.formItems
+          .filter((item) => item.id !== formItemId) // 从表单顶层移除
+          .map((item) => {
+            // 添加到目标行
+            if (item.id === rowId && item.type === 'row') {
+              return {
+                ...item,
+                children: [...(item.children || []), itemToMove],
+              };
+            }
+            return item;
+          }),
+      };
+    }),
 
   clearFormItems: () =>
     set(() => ({

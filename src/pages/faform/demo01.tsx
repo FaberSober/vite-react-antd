@@ -20,6 +20,7 @@ export default function FaFormDemo01() {
   const reorderRowChildren = useFaFormStore((state) => state.reorderRowChildren);
   const moveChildBetweenRows = useFaFormStore((state) => state.moveChildBetweenRows);
   const moveChildFromRowToForm = useFaFormStore((state) => state.moveChildFromRowToForm);
+  const moveFormItemToRow = useFaFormStore((state) => state.moveFormItemToRow);
   const addFormItem = useFaFormStore((state) => state.addFormItem);
   const addChildToRow = useFaFormStore((state) => state.addChildToRow);
 
@@ -99,6 +100,15 @@ export default function FaFormDemo01() {
     const rowContainerId = String(over.id);
     if (rowContainerId.startsWith('droppable-row-')) {
       const rowId = rowContainerId.replace('droppable-row-', '');
+      
+      // 处理从主表单拖动项目到行容器
+      const activeId = String(active.id);
+      const isFormItem = formItems.some((item) => item.id === activeId);
+      if (isFormItem && activeType !== 'RowItem') {
+        moveFormItemToRow(activeId, rowId);
+        return;
+      }
+
       if (active.id === 'input') {
         addChildToRow(rowId, 'input');
       } else if (active.id === 'row') {
