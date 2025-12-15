@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
+import 'virtual:uno.css';
 
 import './index.scss';
 

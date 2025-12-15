@@ -34,10 +34,13 @@ export default function App() {
 
   return (
     <ConfigProvider locale={local === 'zhCN' ? zhCN : enUS}>
-      <div>
+      <div className="fa-p12">
         <div>
           <p>index.tsx</p>
           <Link to="/blog">blog</Link> |<Link to="/xxx">not exists</Link>
+          <div className="fa-flex-column">
+            <Link to="/unocss/demo01">unocss/demo01</Link>
+          </div>
         </div>
         <div style={{ marginTop: 12 }}>
           <Radio.Group
