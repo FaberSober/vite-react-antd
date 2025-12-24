@@ -99,10 +99,10 @@ export default function MapBoxDemo02() {
       )}
 
       <Marker longitude={104} latitude={35} anchor="bottom">
-        <img src="/image/icon1.png" style={{ width: 20, height: 30 }} alt='icon1' />
+        <img src="/image/icon1.png" style={{ width: 20, height: 30 }} alt="icon1" />
       </Marker>
       <Marker longitude={110} latitude={35} anchor="bottom">
-        <img src="/image/icon2.png" style={{ width: 20, height: 30 }} alt='icon2' />
+        <img src="/image/icon2.png" style={{ width: 20, height: 30 }} alt="icon2" />
       </Marker>
     </Map>
   );
