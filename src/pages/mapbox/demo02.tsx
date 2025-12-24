@@ -14,7 +14,12 @@ import { MAPBOX_KEY } from '@/config';
 export default function MapBoxDemo02() {
   const [countryData, setCountryData] = useState<any>(null);
   const [provinceData, setProvinceData] = useState<any>(null);
-  const [selectedMarker, setSelectedMarker] = useState<{ id: number; name: string; longitude: number; latitude: number } | null>(null);
+  const [selectedMarker, setSelectedMarker] = useState<{
+    id: number;
+    name: string;
+    longitude: number;
+    latitude: number;
+  } | null>(null);
 
   const markers = [
     { id: 1, name: '标记1', longitude: 104, latitude: 35 },
@@ -118,16 +123,12 @@ export default function MapBoxDemo02() {
           anchor="top"
           onClose={() => setSelectedMarker(null)}
           closeButton={true}
-          closeOnClick={false}  // 防止 Popup 内部点击关闭
+          closeOnClick={false} // 防止 Popup 内部点击关闭
         >
           <div style={{ padding: '10px', minWidth: '150px' }}>
             <h4 style={{ margin: '0 0 8px 0' }}>{selectedMarker.name}</h4>
-            <p style={{ margin: '0', fontSize: '12px', color: '#666' }}>
-              经度: {selectedMarker.longitude.toFixed(2)}
-            </p>
-            <p style={{ margin: '0', fontSize: '12px', color: '#666' }}>
-              纬度: {selectedMarker.latitude.toFixed(2)}
-            </p>
+            <p style={{ margin: '0', fontSize: '12px', color: '#666' }}>经度: {selectedMarker.longitude.toFixed(2)}</p>
+            <p style={{ margin: '0', fontSize: '12px', color: '#666' }}>纬度: {selectedMarker.latitude.toFixed(2)}</p>
           </div>
         </Popup>
       )}
