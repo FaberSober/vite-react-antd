@@ -43,8 +43,12 @@ export default function App() {
           </div>
           <h2>MapBox</h2>
           <ol>
-            <li><Link to="/mapbox/demo01">demo01 - 基础地图</Link></li>
-            <li><Link to="/mapbox/demo02">demo02 - 基础地图</Link></li>
+            <li>
+              <Link to="/mapbox/demo01">demo01 - 基础地图</Link>
+            </li>
+            <li>
+              <Link to="/mapbox/demo02">demo02 - 基础地图</Link>
+            </li>
           </ol>
         </div>
         <div style={{ marginTop: 12 }}>
