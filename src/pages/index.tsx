@@ -41,6 +41,12 @@ export default function App() {
           <div className="fa-flex-column">
             <Link to="/unocss/demo01">unocss/demo01</Link>
           </div>
+          <h2>MapBox</h2>
+          <ol>
+            <li>
+              <Link to="/mapbox/demo01">demo01 - 基础地图</Link>{' '}
+            </li>
+          </ol>
         </div>
         <div style={{ marginTop: 12 }}>
           <Radio.Group

@@ -6,8 +6,7 @@
     "useIgnoreFile": false
   },
   "files": {
-    "ignoreUnknown": false,
-    "include": ["src/"]
+    "ignoreUnknown": false
   },
   "formatter": {
     "enabled": true,
@@ -15,22 +14,25 @@
     "indentWidth": 2,
     "lineWidth": 160,
     "lineEnding": "lf"
-	},
-	"organizeImports": {
-		"enabled": false
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true,
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
       "style": {
         "noNonNullAssertion": "warn"
+      },
+      "correctness": {
+        "noUnusedImports": "warn"
+      },
+      "suspicious": {
+        "noShadowRestrictedNames": "warn"
       }
-		}
-	},
-	"javascript": {
-		"formatter": {
-			"quoteStyle": "single",
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
       "lineWidth": 120
     }
   }

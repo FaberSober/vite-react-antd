@@ -39,7 +39,12 @@ export default function App() {
             Learn React
           </a>
           {' | '}
-          <a className="color-#61dafb" href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener noreferrer">
+          <a
+            className="color-#61dafb"
+            href="https://vitejs.dev/guide/features.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Vite Docs
           </a>
         </p>
