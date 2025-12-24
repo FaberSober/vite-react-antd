@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Map, { Layer, Marker, Source } from 'react-map-gl/mapbox';
+import Map, { Layer, Marker, Popup, Source } from 'react-map-gl/mapbox';
 // If using with mapbox-gl v1:
 // import Map from 'react-map-gl/mapbox-legacy';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -14,6 +14,12 @@ import { MAPBOX_KEY } from '@/config';
 export default function MapBoxDemo02() {
   const [countryData, setCountryData] = useState<any>(null);
   const [provinceData, setProvinceData] = useState<any>(null);
+  const [selectedMarker, setSelectedMarker] = useState<{ id: number; name: string; longitude: number; latitude: number } | null>(null);
+
+  const markers = [
+    { id: 1, name: '标记1', longitude: 104, latitude: 35 },
+    { id: 2, name: '标记2', longitude: 110, latitude: 35 },
+  ];
 
   useEffect(() => {
     const source = new RDBSource({});
@@ -98,12 +104,33 @@ export default function MapBoxDemo02() {
         </>
       )}
 
-      <Marker longitude={104} latitude={35} anchor="bottom">
-        <img src="/image/icon1.png" style={{ width: 20, height: 30 }} alt="icon1" />
+      <Marker longitude={104} latitude={35} anchor="bottom" onClick={() => setSelectedMarker(markers[0])}>
+        <img src="/image/icon1.png" style={{ width: 17, height: 25, cursor: 'pointer' }} alt="icon1" />
       </Marker>
-      <Marker longitude={110} latitude={35} anchor="bottom">
-        <img src="/image/icon2.png" style={{ width: 20, height: 30 }} alt="icon2" />
+      <Marker longitude={110} latitude={35} anchor="bottom" onClick={() => setSelectedMarker(markers[1])}>
+        <img src="/image/icon2.png" style={{ width: 17, height: 25, cursor: 'pointer' }} alt="icon2" />
       </Marker>
+
+      {selectedMarker && (
+        <Popup
+          longitude={selectedMarker.longitude}
+          latitude={selectedMarker.latitude}
+          anchor="top"
+          onClose={() => setSelectedMarker(null)}
+          closeButton={true}
+          closeOnClick={false}  // 防止 Popup 内部点击关闭
+        >
+          <div style={{ padding: '10px', minWidth: '150px' }}>
+            <h4 style={{ margin: '0 0 8px 0' }}>{selectedMarker.name}</h4>
+            <p style={{ margin: '0', fontSize: '12px', color: '#666' }}>
+              经度: {selectedMarker.longitude.toFixed(2)}
+            </p>
+            <p style={{ margin: '0', fontSize: '12px', color: '#666' }}>
+              纬度: {selectedMarker.latitude.toFixed(2)}
+            </p>
+          </div>
+        </Popup>
+      )}
     </Map>
   );
 }
